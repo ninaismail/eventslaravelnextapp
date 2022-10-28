@@ -5,7 +5,7 @@ export default function EventList(props) {
   const { items } = props;
   
   return (
-    <ul className={classes.grid}>
+    <ul className={classes.list}>
       {Array.isArray(items)&&items.map((event) => (
         <EventItem
           key={event.id}
