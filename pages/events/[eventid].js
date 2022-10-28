@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 function EventDetailPage(props) {
   const event = props.selectedEvent;
-
+  console.log(event)
   if (!event) {
     return (
       <div className="center">
@@ -34,17 +34,15 @@ function EventDetailPage(props) {
     </Fragment>
   );
 }
-
 export async function getStaticProps(context) {
   // params contains the event `id`.
   // If the route is like /events/1, then params.id is 1
-  const eventId = context.params.id;
+  const eventId = context.params.eventid;
   const event = await axios.get("http://127.0.0.1:8000/api/events/"+{eventId});
-  console.log(event)
   return {
     props: {
-        // Pass event data to the page via props
-      selectedEvent: event
+      // Pass event data to the page via props
+      selectedEvent: event.data
     },
     revalidate: 30
   };
@@ -57,11 +55,10 @@ export async function getStaticPaths() {
   const pathsWithParams =  Array.isArray(events)&&events.map((event) => ({
     params: { eventid: event.id },
   }))
-
   // We'll pre-render only these paths at build time.
   return {
     paths: pathsWithParams,
-    fallback: 'blocking'
+    fallback: false
   };
 }
 

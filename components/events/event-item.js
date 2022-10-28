@@ -1,5 +1,4 @@
 import classes from '../events/event-item.module.css';
-import Button from '../ui/button';
 
 export default function EventItem(props) {
     const { id, title, image, date, location } = props;
@@ -26,12 +25,12 @@ export default function EventItem(props) {
             <address>{formattedAddress}</address>
         </div>
         <div className={classes.actions}>
-          <Button Link={exploreLink}>
+          <a className={classes.btn} href={exploreLink}>
             <span>Explore Event</span>
             <span className={classes.icon}>
             
             </span>
-          </Button>
+          </a>
         </div>
       </div>
     </div>

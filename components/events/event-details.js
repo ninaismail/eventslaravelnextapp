@@ -1,5 +1,4 @@
 import classes from '../events/event-details.module.css';
-import Button from '../ui/button';
 
 export default function EventDetails(props) {
     const { title, discription, image, date, location } = props;
@@ -24,12 +23,12 @@ export default function EventDetails(props) {
         <div class="mt-8">
             <img class="w-full rounded-lg" src={'/' + image} alt="event images"/>
         </div>
-        <Button Link={gobacklink}>
+        <a className={classes.btn} href={gobacklink}>
             <span>Go Back</span>
             <span className="">
             
             </span>
-        </Button>
+        </a>
     </div>
 </section>
     )
