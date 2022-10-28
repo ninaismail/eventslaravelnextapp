@@ -1,4 +1,5 @@
 import classes from './results-title.module.css';
+import btnclass from '../events/event-item.module.css';
 
 function ResultsTitle(props) {
   const { date } = props;
@@ -10,8 +11,8 @@ function ResultsTitle(props) {
 
   return (
     <section className={classes.title}>
-      <h1>Events in {humanReadableDate}</h1>
-      <a href='/events'>Show all events</a>
+      <h1>Events in {humanReadableDate}</h1><br/>
+      <a className={btnclass.btn} href='/events'>Show all events</a>
     </section>
   );
 }

@@ -48,7 +48,6 @@ function FilteredEventsPage() {
       year: numYear,
       month: numMonth,
     });
-    console.log({filteredEvents});//why is it returning a promise instead of an array?
   //we check if fitered events is an empty array,
   //so we have a valid filter but we don't find an event for the chosen filter
     if (!filteredEvents || filteredEvents.length === 0) {
@@ -89,7 +88,6 @@ function FilteredEventsPage() {
       const eventDate = new Date(event.date);
       return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
     });
-    console.log({filteredEvents})
     return filteredEvents;
   }
   export default FilteredEventsPage;
