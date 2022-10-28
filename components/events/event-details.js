@@ -1,4 +1,3 @@
-import classes from '../events/event-details.module.css';
 import btnclass from '../events/event-item.module.css';
 
 export default function EventDetails(props) {

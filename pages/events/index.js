@@ -1,10 +1,20 @@
-import EventList from '../../components/events/event-list';
 import axios from '../../lib/axios';
+import { useRouter } from 'next/router';
 
-export default function EventsPage({ events }) {
+import EventsSearch from '../../components/events/event-search';
+import EventList from '../../components/events/event-list';
+
+export default function EventsPage(props) {
+  const router = useRouter();
+  const { events } = props;
+  function findEventsHandler(year, month) {
+    const fullPath = `/events/${year}/${month}`;
+    router.push(fullPath);
+  }
   console.log(events)
     return (
       <div>
+      <EventsSearch onSearch={findEventsHandler} />
       <EventList items={events} />
       </div>
     )
