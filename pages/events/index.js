@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import EventsSearch from '../../components/events/event-search';
 import EventList from '../../components/events/event-list';
+import NewsletterForm from '../../components/newsletter/register-newsletter';
 
 export default function EventsPage(props) {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function EventsPage(props) {
       <div>
       <EventsSearch onSearch={findEventsHandler} />
       <EventList items={events} />
+      <NewsletterForm/>
       </div>
     )
   }
