@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useState } from 'react';
-import axios from '../../lib/axios';
 
 import { useRouter } from 'next/router';
 import Head from 'next/head';
@@ -12,7 +11,6 @@ function FilteredEventsPage() {
   const router = useRouter();
   //when the page is first rendered we don't have the slug value (we don't have access to the url data yet)
     const filterData = router.query.slug;
-
   //the data is not loaded yet
     if (!filterData) {
       return <p className='center'>Loading...</p>;
@@ -48,6 +46,7 @@ function FilteredEventsPage() {
       year: numYear,
       month: numMonth,
     });
+    console.log({filteredEvents})
   //we check if fitered events is an empty array,
   //so we have a valid filter but we don't find an event for the chosen filter
     if (!filteredEvents || filteredEvents.length === 0) {
@@ -71,7 +70,7 @@ function FilteredEventsPage() {
         <title>Filtered Events</title>
         <meta
           name='filtered events'
-        content='all events for ${numMonth}/${numYear}'
+          content='all events for ${numMonth}/${numYear}'
         />
       </Head>
         <ResultsTitle date={date} />
@@ -82,8 +81,8 @@ function FilteredEventsPage() {
   export async function getFilteredEvents(dateFilter) {
     const { year, month } = dateFilter;
   
-    const allEvents = await axios.get("http://127.0.0.1:8000/api/events");
-  
+    const res = await fetch("http://127.0.0.1:8000/api/events");
+    const allEvents = await res.json()
     let filteredEvents = allEvents.filter((event) => {
       const eventDate = new Date(event.date);
       return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
