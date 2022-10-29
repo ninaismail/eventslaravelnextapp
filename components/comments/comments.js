@@ -12,10 +12,11 @@ function Comments(props) {
 
   useEffect(() => {
     if (showComments) {
-      fetch(`http://127.0.0.1:8000/api/events/${eventId}`)
+      fetch(`http://127.0.0.1:8000/api/events/${eventId}/comment`)
         .then((response) => response.json())
         .then((data) => {
-          setComments(data.comments);
+          setComments(data);
+          console.log(data)
         });
     }
   }, [showComments]);
