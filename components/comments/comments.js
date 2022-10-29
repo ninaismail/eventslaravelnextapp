@@ -5,14 +5,14 @@ import NewComment from './new-comment';
 import classes from './comments.module.css';
 
 function Comments(props) {
-  const { eventid } = props;
+  const { eventId } = props;
 
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     if (showComments) {
-      fetch('/api/comments/' + eventid)
+      fetch(`http://127.0.0.1:8000/api/events/${eventId}`)
         .then((response) => response.json())
         .then((data) => {
           setComments(data.comments);
@@ -25,15 +25,15 @@ function Comments(props) {
   }
 
   function addCommentHandler(commentData) {
-    // fetch('/api/comments/' + eventId, {
-    //   method: 'POST',
-    //   body: JSON.stringify(commentData),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => console.log(data));
+    fetch(`http://127.0.0.1:8000/api/events/${eventId}/comment`, {
+      method: 'POST',
+      body: JSON.stringify(commentData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   }
 
   return (

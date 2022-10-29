@@ -1,5 +1,5 @@
 import EventDetails from '../../components/events/event-details';
-import CommentForm from '../../components/comments/new-comment';
+import Comments from '../../components/comments/comments';
 
 import axios from '../../lib/axios';
 import { Fragment } from 'react';
@@ -33,7 +33,7 @@ function EventDetailPage(props) {
          date={event.date}
          image={event.image} 
        />
-       <CommentForm />
+       <Comments eventId={event.id}/>
     </Fragment>
   );
 }
