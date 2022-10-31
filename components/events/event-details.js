@@ -23,12 +23,13 @@ export default function EventDetails(props) {
         <div className="mt-8">
             <img className="w-full rounded-lg" src={'/' + image} alt="event images"/>
         </div>
+        <div className="mt-8">
         <a className={btnclass.btn} href={gobacklink}>
             <span>Go Back</span>
             <span className="">
-            
             </span>
         </a>
+        </div>
     </div>
 </section>
     )
