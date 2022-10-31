@@ -6,7 +6,7 @@ import { Fragment } from 'react';
 import Head from 'next/head';
 
 function EventDetailPage(props) {
-
+  
   const event = props.selectedEvent;
   if (!event) {
     return (

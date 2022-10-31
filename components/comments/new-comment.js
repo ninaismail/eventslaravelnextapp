@@ -56,7 +56,7 @@ function NewComment(props) {
       {isInvalid && <p>Please enter a valid email address and comment!</p>}
       <button className={classes.btn}>Submit</button>
     </form>
-    </div>
+    </div> 
   );
 }
 
